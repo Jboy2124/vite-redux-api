@@ -21,6 +21,24 @@ module.exports = {
     }
   },
 
+  async get_account(id) {
+    try {
+      const result = await knex("tbl_account")
+        .select({
+          id: "account_id",
+          fname: "fname",
+          lname: "lname",
+          gender: "gender",
+          age: "age",
+        })
+        .where("account_id", id);
+
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
   async store(payload) {
     const { title, fname, lname, gender, age, email } = payload;
     try {

@@ -11,6 +11,7 @@ module.exports = {
     try {
       const data = await schema.validateAsync(req.body);
       const response = await Login.userLogin(data);
+
       res.json(response);
     } catch (error) {
       console.log(error);
