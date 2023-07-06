@@ -77,7 +77,7 @@ module.exports = {
           data = { error: "Invalid password" };
         }
       } else {
-        data = { error: "Invalid username" };
+        data = { error: "Invalid email credential" };
       }
 
       return data;
