@@ -16,6 +16,7 @@ module.exports = router
 
   //login
   .post("/signin", Login.signin)
+  .post("/verify/email", Login.options)
 
   //accounts
   .get("/account", Accounts.get)

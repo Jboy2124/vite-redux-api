@@ -40,6 +40,9 @@ module.exports = {
       lname: joi.string().allow("").optional(),
       gender: joi.string().allow("").optional(),
       age: joi.number().allow("").optional(),
+      newsletter: joi.boolean().allow("").optional(),
+      privacy: joi.boolean().allow("").optional(),
+      terms: joi.boolean().allow("").optional(),
       email: joi.string().required(),
       password: joi.string().required(),
     });

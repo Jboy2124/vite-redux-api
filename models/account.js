@@ -40,7 +40,17 @@ module.exports = {
   },
 
   async store(payload) {
-    const { title, fname, lname, gender, age, email } = payload;
+    const {
+      title,
+      fname,
+      lname,
+      gender,
+      age,
+      newsletter,
+      privacy,
+      terms,
+      email,
+    } = payload;
     try {
       const isMatch = await verify(email);
 
@@ -53,6 +63,9 @@ module.exports = {
           lname: lname,
           gender: gender,
           age: age,
+          newsletter: newsletter,
+          privacy: privacy,
+          terms: terms,
         });
         return account_id;
       }
