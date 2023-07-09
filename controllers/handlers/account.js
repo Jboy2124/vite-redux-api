@@ -15,6 +15,15 @@ module.exports = {
     }
   },
 
+  async getCount(req, res) {
+    try {
+      const response = await Account.totalAccount();
+      res.json(response);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
   async patch(req, res) {
     const schema = joi.object({
       id: joi.number().required(),

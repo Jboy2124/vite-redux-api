@@ -8,7 +8,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:3002",
     credentials: true,
   })
 );
@@ -17,5 +17,8 @@ app.use(bodyParser.json());
 app.use(Routes);
 
 app.listen(port, () => {
-  console.log("Server is running at port: ", port);
+  console.log('---------------------')
+  console.log('Backend Configuration')
+  console.log('---------------------')
+  console.log(`Server Port No.: ${port}`);
 });

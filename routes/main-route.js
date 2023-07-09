@@ -19,6 +19,7 @@ module.exports = router
   .post("/verify/email", Login.options)
 
   //accounts
+  .get("/account/total", Accounts.getCount)
   .get("/account", Accounts.get)
   .post("/account", Accounts.post)
   .post("/account/avatar", upload().single("avatar"), Accounts.profileImage)

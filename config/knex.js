@@ -11,4 +11,14 @@ const knex = require("knex")({
   pool: { min: 0, max: 10 },
 });
 
+knex
+  .raw("SELECT 1")
+  .then(() => {
+    console.log(`Database Port No.: ${process.env.DB_CONFIG_PORT}`);
+  })
+  .catch((error) => {
+    console.log('Database is not connected!');
+  });
+
+
 module.exports = knex;

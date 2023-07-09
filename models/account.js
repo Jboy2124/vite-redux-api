@@ -21,6 +21,15 @@ module.exports = {
     }
   },
 
+  async totalAccount() {
+    try {
+      const result = await knex("tbl_account").count({ count: "account_id" });
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
   async get_account(id) {
     try {
       const result = await knex("tbl_account")
