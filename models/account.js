@@ -5,16 +5,24 @@ const knex = require("../config/knex");
 const { verify } = require("../models/login");
 
 module.exports = {
-  async list() {
+  async list(page) {
+    const limit = 5;
+    const offset = page * limit;
+
     try {
-      const result = await knex("tbl_account").select({
-        id: "account_id",
-        title: "title",
-        fname: "fname",
-        lname: "lname",
-        gender: "gender",
-        age: "age",
-      });
+      const result = await knex("tbl_account")
+        .select({
+          id: "account_id",
+          title: "title",
+          fname: "fname",
+          lname: "lname",
+          gender: "gender",
+          age: "age",
+          status: "status",
+        })
+        .limit(limit)
+        .offset(offset);
+
       return result;
     } catch (error) {
       console.log(error);
@@ -22,9 +30,18 @@ module.exports = {
   },
 
   async totalAccount() {
+    let totalPage = 0;
+    let resultCount = 0;
+    const limit = 5;
     try {
       const result = await knex("tbl_account").count({ count: "account_id" });
-      return result;
+
+      resultCount = result[0]?.count;
+
+      if (resultCount <= limit) totalPage = resultCount;
+      else totalPage = Math.ceil(resultCount / limit);
+
+      return totalPage;
     } catch (error) {
       console.log(error);
     }

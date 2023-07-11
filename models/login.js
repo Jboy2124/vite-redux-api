@@ -65,7 +65,11 @@ module.exports = {
 
           data = [
             {
-              data: { fname: res[0]?.fname, email: result[0]?.email },
+              data: {
+                fname: res[0]?.fname,
+                lname: res[0]?.lname,
+                email: result[0]?.email,
+              },
               token: await signin({
                 fname: res[0]?.fname,
                 lname: res[0]?.lname,

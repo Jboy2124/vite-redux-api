@@ -6,6 +6,7 @@ const router = express.Router();
 const Greetings = require("../controllers/handlers/initial");
 const Accounts = require("../controllers/handlers/account");
 const Login = require("../controllers/handlers/login");
+const Schedule = require("../controllers/handlers/schedule");
 
 //middlewares
 const { upload } = require("../controllers/midllewares/profile");
@@ -23,4 +24,7 @@ module.exports = router
   .get("/account", Accounts.get)
   .post("/account", Accounts.post)
   .post("/account/avatar", upload().single("avatar"), Accounts.profileImage)
-  .patch("/account", Accounts.patch);
+  .patch("/account", Accounts.patch)
+
+  //schedule
+  .post("/schedule", Schedule.post);

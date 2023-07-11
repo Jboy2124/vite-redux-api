@@ -7,8 +7,10 @@ const Login = require("../../models/login");
 
 module.exports = {
   async get(req, res) {
+    const { page } = req.query;
+
     try {
-      const response = await Account.list();
+      const response = await Account.list(page);
       res.json(response);
     } catch (error) {
       console.log(error);
