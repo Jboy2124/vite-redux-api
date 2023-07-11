@@ -6,7 +6,7 @@ const { verify } = require("../models/login");
 
 module.exports = {
   async list(page) {
-    const limit = 5;
+    const limit = 3;
     const offset = page * limit;
 
     try {
@@ -32,7 +32,7 @@ module.exports = {
   async totalAccount() {
     let totalPage = 0;
     let resultCount = 0;
-    const limit = 5;
+    const limit = 3;
     try {
       const result = await knex("tbl_account").count({ count: "account_id" });
 
@@ -42,6 +42,7 @@ module.exports = {
       else totalPage = Math.ceil(resultCount / limit);
 
       return totalPage;
+      // return resultCount;
     } catch (error) {
       console.log(error);
     }
